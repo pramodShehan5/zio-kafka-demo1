@@ -1,0 +1,70 @@
+version: '3'
+services:
+  kafka1:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka1
+    ports:
+      - 49092:49092  
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://kafka1:9092,CONTROLLER://kafka1:9093,PLAINTEXT_HOST://0.0.0.0:49092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka1:9092,PLAINTEXT_HOST://localhost:49092
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka1:9093,2@kafka2:9093,3@kafka3:9093'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+    volumes:
+      - ./run_workaround.sh:/tmp/run_workaround.sh
+    command: "bash -c '/tmp/run_workaround.sh && /etc/confluent/docker/run'"
+  kafka2:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka2
+    ports:
+      - 29092:29092
+    environment:
+      KAFKA_NODE_ID: 2
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://kafka2:9092,CONTROLLER://kafka2:9093,PLAINTEXT_HOST://0.0.0.0:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka2:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka1:9093,2@kafka2:9093,3@kafka3:9093'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+    volumes:
+      - ./run_workaround.sh:/tmp/run_workaround.sh
+    command: "bash -c '/tmp/run_workaround.sh && /etc/confluent/docker/run'"
+  kafka3:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka3
+    ports:
+      - 39092:39092   
+    environment:
+      KAFKA_NODE_ID: 3
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_LISTENERS: PLAINTEXT://kafka3:9092,CONTROLLER://kafka3:9093,PLAINTEXT_HOST://0.0.0.0:39092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka3:9092,PLAINTEXT_HOST://localhost:39092
+      KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
+      KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka1:9093,2@kafka2:9093,3@kafka3:9093'
+      KAFKA_PROCESS_ROLES: 'broker,controller'
+    volumes:
+      - ./run_workaround.sh:/tmp/run_workaround.sh
+    command: "bash -c '/tmp/run_workaround.sh && /etc/confluent/docker/run'"
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    ports:
+      - 9001:9000
+    environment: 
+     KAFKA_BROKERCONNECT: kafka3:9092
+     JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify" 
+  zio-kafka-consumer:
+    image: zio-kafka-consumer:0.1.0-SNAPSHOT
+    container_name: consumer
+    environment:
+      KAFKA_HOST: kafka1:9092
+      KAFKA_TOPIC: Test
+  zio-kafka-producer:
+    image: zio-kafka-producer:0.1.0-SNAPSHOT
+    container_name: producer
+    environment:
+      KAFKA_HOST: kafka1:9092
+      KAFKA_TOPIC: Test
+
