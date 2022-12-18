@@ -1,0 +1,19 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/zio-kafka-producer_2.13-0.1.0-SNAPSHOT.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/application.conf[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod/kafka[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod/kafka[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod/kafka/config[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod/kafka/config[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod/kafka/config/Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod/kafka/config/Config.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod/kafka/ZioApp1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod/kafka/ZioApp1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	com/pramod/kafka/ZioApp1$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /Users/pramodshehan/Work/zio-kafka-producer/target/scala-2.13/classes/com/pramod/kafka/ZioApp1$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
