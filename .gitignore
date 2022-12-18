@@ -1,0 +1,6 @@
+zio-kafka-consumer/.idea
+zio-kafka-consumer/target
+zio-kafka-consumer/project/target
+zio-kafka-producer/.idea
+zio-kafka-producer/target
+zio-kafka-producer/project/target

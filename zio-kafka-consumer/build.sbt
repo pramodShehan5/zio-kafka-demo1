@@ -15,5 +15,4 @@ libraryDependencies ++= Seq("dev.zio" %% "zio" % "2.0.5",
   "dev.zio" %% "zio-json" % "0.4.2",
   "org.slf4j" % "slf4j-simple" % "2.0.6",
   "com.typesafe" % "config" % "1.4.1"
-
 )
